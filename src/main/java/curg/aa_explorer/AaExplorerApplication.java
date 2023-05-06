@@ -1,0 +1,13 @@
+package curg.aa_explorer;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class AaExplorerApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(AaExplorerApplication.class, args);
+    }
+
+}
