@@ -7,4 +7,5 @@ type Block {
 
 type Query {
     blockById(id: ID): Block
+    blockAll : [Block]
 }
