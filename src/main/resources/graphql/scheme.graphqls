@@ -1,0 +1,10 @@
+
+type Block {
+    id : ID
+    name : String
+}
+
+
+type Query {
+    blockById(id: ID): Block
+}
