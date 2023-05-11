@@ -1,6 +1,7 @@
 package AaExplorerBack.Repository;
 
 import AaExplorerBack.Domain.Block;
+import AaExplorerBack.Domain.Transaction;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

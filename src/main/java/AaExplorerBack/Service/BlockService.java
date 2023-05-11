@@ -16,9 +16,10 @@ public class BlockService {
     @Autowired
     private BlockRepository blockRepository;
 
-    public BlockService() {
-
+    public BlockService(BlockRepository blockRepository) {
+        this.blockRepository = blockRepository;
     }
+
 
     public Block addBlock() {
         Block block = new Block();
@@ -27,7 +28,6 @@ public class BlockService {
         Transaction tx = new Transaction();
         txs.add(tx);
         tx.setId(0L);
-
 
         block.setId(1L);
         block.setName("test");

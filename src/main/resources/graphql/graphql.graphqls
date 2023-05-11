@@ -1,8 +1,8 @@
 type Block {
-    id : ID!
+    id : ID
     name : String
 }
 
 type Query {
-    findById(id: ID!) : Block
+    findById(id: ID) : Block
 }

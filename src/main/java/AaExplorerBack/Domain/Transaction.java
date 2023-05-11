@@ -9,10 +9,11 @@ public class Transaction {
     @Id
     private Long id;
 
+    private Long blockId;
     //
     private Long value;
 
-    // byte value
+    // byte value;
     private Byte[] from;
     private Byte[] to;
     private Byte[] inputData;
