@@ -1,10 +1,12 @@
 package AaExplorerBack.Service;
 
 import AaExplorerBack.Domain.Block;
+import AaExplorerBack.Domain.Transaction;
 import AaExplorerBack.Repository.BlockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +22,11 @@ public class BlockService {
 
     public Block addBlock(String name) {
         Block block = new Block();
-        block.setId(idx++);
         block.setName(name);
+        List<Transaction> list = new ArrayList<>();
+
+        list.add(new Transaction(2,"0x1235"));
+        block.setTxs(list);
 
         return blockRepository.save(block);
     }

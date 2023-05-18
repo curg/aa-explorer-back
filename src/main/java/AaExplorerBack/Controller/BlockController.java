@@ -19,6 +19,7 @@ public class BlockController {
     private BlockService blockService;
 
     public BlockController() {
+
     }
 
     @GetMapping("/")
