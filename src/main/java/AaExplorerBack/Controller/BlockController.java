@@ -4,6 +4,7 @@ import AaExplorerBack.Domain.Block;
 import AaExplorerBack.Service.BlockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,27 +19,21 @@ public class BlockController {
     private BlockService blockService;
 
     public BlockController() {
-
     }
 
-    @GetMapping("/")
-    public Block addBlock(@Argument String blockNumber){
-        return blockService.addBlock(blockNumber);
-    }
-
-    @GetMapping("/find")
-    public Optional<Optional<Block>> test(@Argument String blockNumber){
-        return Optional.ofNullable(blockService.findByBlockNumber(blockNumber));
-    }
-
-    @GetMapping("/findAll")
-    public List<Block> test2(){
-        return blockService.findAll();
+    @MutationMapping
+    public Block addBlock(@Argument String blockNumber,@Argument String blockHash, @Argument List<String> txHashes){
+        return blockService.addBlock(blockNumber,blockHash,txHashes);
     }
 
     @QueryMapping
-    public Optional<Optional<Block>> blockByBlockNumber(String blockNumber){
-        return Optional.ofNullable(blockService.findByBlockNumber(blockNumber));
+    public Optional<Block> blockByBlockNumber(@Argument String blockNumber){
+        return blockService.findByBlockNumber(blockNumber);
+    }
+
+    @QueryMapping
+    public List<Block> blockAll(){
+        return blockService.findAll();
     }
 
 }

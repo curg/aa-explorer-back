@@ -1,4 +1,3 @@
-
 type Block {
     blockNumber : String
     blockHash : String
@@ -7,4 +6,9 @@ type Block {
 
 type Query {
     blockByBlockNumber(blockNumber : String) : Block
+    blockAll : [Block]
+}
+
+type Mutation {
+    addBlock(blockNumber:String, blockHash:String, txHashes: [String]) : Block
 }
