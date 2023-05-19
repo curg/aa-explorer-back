@@ -1,14 +1,14 @@
 type Block {
-    blockNumber : String
-    blockHash : String
-    txHashes : [String]
+    blockNumber : String!
+    blockHash : String!
+    txHashes : [String]!
 }
 
 type Query {
-    blockByBlockNumber(blockNumber : String) : Block
+    blockByBlockNumber(blockNumber : String!) : Block
     blockAll : [Block]
 }
 
 type Mutation {
-    addBlock(blockNumber:String, blockHash:String, txHashes: [String]) : Block
+    addBlock(blockNumber:String!, blockHash:String!, txHashes: [String]!) : Block
 }
