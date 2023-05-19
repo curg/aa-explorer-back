@@ -6,7 +6,9 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.math.BigInteger;
 import java.util.List;
 
 
@@ -14,14 +16,11 @@ import java.util.List;
 @Getter @Setter
 public class Block {
 
-    @Transient
-    public static final String SEQUENCE_NAME = "block_sequence";
+    private String blockNumber;
+    private String blockHash;
+    private List<String> txHashes;
 
-    @Id
-    private long id;
-    private String name;
-
-    private long number;
-    private List<Transaction> txs ;
-
+    public Block() {
+        blockNumber = "";
+    }
 }

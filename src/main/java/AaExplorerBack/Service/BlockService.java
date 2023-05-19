@@ -1,42 +1,30 @@
 package AaExplorerBack.Service;
 
 import AaExplorerBack.Domain.Block;
-import AaExplorerBack.Domain.Transaction;
-import AaExplorerBack.Repository.BlockRepository;
+import AaExplorerBack.Repository.MemoryBlockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class BlockService {
     @Autowired
-    private BlockRepository blockRepository;
+    private MemoryBlockRepository memoryBlockRepository;
 
-    Long idx = 0L;
-
-    public BlockService() {
+    public Optional<Block> findByBlockNumber(String blockNumber){
+        return memoryBlockRepository.findByBlockNumber(blockNumber);
     }
-
-    public Block addBlock(String name) {
+    public Block addBlock(String blockNumber){
         Block block = new Block();
-        block.setName(name);
-        List<Transaction> list = new ArrayList<>();
-
-        list.add(new Transaction(2,"0x1235"));
-        block.setTxs(list);
-
-        return blockRepository.save(block);
+        block.setBlockNumber(blockNumber);
+        return memoryBlockRepository.insert(block);
+    }
+    public List<Block> findAll(){
+        return memoryBlockRepository.findAll();
     }
 
-    public Optional<Block> getById(Long id){
-        return blockRepository.findById(id);
-    }
-
-    public List<Block> getAll(){
-        return blockRepository.findAll();
-    }
 
 }
